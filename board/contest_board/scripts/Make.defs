@@ -25,6 +25,12 @@ include ${TOPDIR}/tools/Config.mk
 
 # STM32N657X0 is Cortex-M55 (ARMv8-M Mainline)
 
+# Add openvela prebuilt ARM toolchain to PATH if not already present
+PREBUILT_GCC := $(TOPDIR)/../prebuilts/gcc/linux-x86_64/arm-none-eabi/bin
+ifneq ($(PATH),)
+  export PATH := $(PREBUILT_GCC):$(PATH)
+endif
+
 include ${TOPDIR}/arch/arm/src/armv8-m/Toolchain.defs
 
 ARCHSCRIPT += $(BOARD_DIR)$(DELIM)scripts$(DELIM)flash.ld
