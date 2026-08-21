@@ -1,11 +1,15 @@
 #
-# Contest 2026 team 000 board placeholder
+# NUCLEO-N657X0-Q board adaptation for contest2026
+#
+# This board runs on STM32N657X0 (Cortex-M55, ARMv8.1-M) with
+# external MX25UM51245G XSPI flash.  Currently configured for
+# SRAM-only operation (DEV boot mode via debugger).
 #
 
-if ARCH_BOARD_CONTEST2026_000_BOARD
+if ARCH_BOARD_CONTEST2026_224_BOARD
 
-config ARCH_BOARD_CONTEST2026_000_BOARD_TAG
+config ARCH_BOARD_CONTEST2026_224_BOARD_TAG
 	string "Board tag"
-	default "contest2026_000_board"
+	default "contest2026_224_board"
 
 endif

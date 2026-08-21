@@ -1,4 +1,10 @@
-# Contest 2026 team 000 board placeholder
-if(CONFIG_ARCH_BOARD_CONTEST2026_000_BOARD)
-  add_subdirectory(src)
-endif()
+# ##############################################################################
+# vendor/openvela/boards/contest2026_224_board/CMakeLists.txt
+#
+# NUCLEO-N657X0-Q board adaptation for contest2026
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# ##############################################################################
+
+add_subdirectory(src)

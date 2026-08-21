@@ -1,3 +1,63 @@
-# Minimal placeholder defconfig for contest2026_000_board.
-# Not intended to boot real hardware; sample only.
-CONFIG_ARCH_BOARD_CONTEST2026_000_BOARD=y
+#
+# NUCLEO-N657X0-Q (STM32N657X0) - Minimal NSH configuration
+#
+# This is the baseline "新硬件适配" (hardware porting) defconfig.
+# Runs from SRAM in DEV boot mode (loaded by ST-Link debugger).
+# External XSPI flash support will be added in a follow-up step.
+#
+
+# Custom board in vendor directory
+CONFIG_ARCH_BOARD_CUSTOM=y
+CONFIG_ARCH_BOARD_CUSTOM_DIR="../vendor/openvela/boards/contest2026_224_board"
+CONFIG_ARCH_BOARD_CUSTOM_DIR_RELPATH=y
+CONFIG_ARCH_BOARD_CUSTOM_NAME="nsh"
+
+# Architecture: ARMv8-M (Cortex-M55)
+CONFIG_ARCH="arm"
+CONFIG_ARCH_ARMV8M=y
+CONFIG_ARCH_CHIP="stm32n6"
+CONFIG_ARCH_CHIP_STM32=y
+CONFIG_ARCH_CHIP_STM32N6=y
+CONFIG_ARCH_CHIP_STM32N657X0=y
+CONFIG_ARCH_CORTEXM55=y
+
+# Stack configuration
+CONFIG_ARCH_INTERRUPTSTACK=4096
+CONFIG_ARCH_STACKDUMP=y
+
+# Board settings
+CONFIG_BOARD_LATE_INITIALIZE=y
+CONFIG_BOARD_LOOPSPERMSEC=21000
+
+# System
+CONFIG_BUILTIN=y
+CONFIG_HAVE_CXX=y
+CONFIG_HAVE_CXXINITIALIZE=y
+CONFIG_IDLETHREAD_STACKSIZE=4096
+
+# NSH shell
+CONFIG_INIT_ENTRYPOINT="nsh_main"
+CONFIG_NSH_BUILTIN_APPS=y
+CONFIG_NSH_FILEIOSIZE=512
+CONFIG_NSH_READLINE=y
+CONFIG_SYSTEM_NSH=y
+
+# RAM configuration (SRAM only, DEV boot mode)
+CONFIG_RAM_START=0x34000400
+CONFIG_RAM_SIZE=4193280
+
+# Output format
+CONFIG_RAW_BINARY=y
+
+# Scheduler
+CONFIG_RR_INTERVAL=200
+CONFIG_SCHED_WAITPID=y
+
+# Serial console: USART1 on PE5(TX)/PE6(RX) via ST-Link VCP
+CONFIG_STM32_USART1=y
+CONFIG_USART1_SERIAL_CONSOLE=y
+
+# Debug
+CONFIG_DEBUG_FEATURES=y
+CONFIG_DEBUG_ERROR=y
+CONFIG_DEBUG_WARN=y
